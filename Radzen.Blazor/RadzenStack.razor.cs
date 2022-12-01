@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using System;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,7 +24,7 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The spacing.</value>
         [Parameter]
-        public double Spacing { get; set; } = 0;
+        public string Spacing { get; set; }
 
         /// <summary>
         /// Gets the final CSS style rendered by the component. Combines it with a <c>style</c> custom attribute.
@@ -45,7 +46,7 @@ namespace Radzen.Blazor
         {
             var horizontal = Orientation == Orientation.Horizontal;
 
-            return $"display:grid;grid-auto-flow:{(horizontal ? "column" : "row")};grid-auto-{(horizontal ? "columns" : "rows")}:max-content;grid-template-{(horizontal ? "columns" : "rows")}: none;{(Spacing > 0 ? "grid-gap:" + Spacing + "px;" : "")}";
+            return $"display:grid;grid-auto-flow:{(horizontal ? "column" : "row")};grid-auto-{(horizontal ? "columns" : "rows")}:max-content;grid-template-{(horizontal ? "columns" : "rows")}: none;{(!string.IsNullOrEmpty(Spacing) ? "grid-gap:" + Spacing + (Spacing.All(c => Char.IsDigit(c)) ? "px;" : "") : "")}";
         }
     }
 }
