@@ -1,58 +1,30 @@
 ﻿@page "/stack"
 
-@using RadzenBlazorDemos.Data
-@using RadzenBlazorDemos.Models.Northwind
-@using Microsoft.EntityFrameworkCore
-
 <RadzenExample Name="Stack">
+    <RadzenCard Class="my-4" style="display: flex; align-items: center; gap: 0.5rem">
+        <div style="white-space:nowrap; margin-right: 16px">Orientation:</div>
+        <RadzenSelectBar @bind-Value="@orientation" TextProperty="Text" ValueProperty="Value"
+                         Data="@(Enum.GetValues(typeof(Orientation)).Cast<Orientation>().Select(t => new { Text = $"{t}", Value = t }))" Size="ButtonSize.Small" />
+        <div style="white-space:nowrap;margin-left: 16px">Spacing:</div>
+        <RadzenNumeric @bind-Value="@spacing" />
+    </RadzenCard>
+
     <div class="col-md-6 p-3">
-        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Vertical stack</RadzenText>
-        <RadzenStack>
-            <ChildContent>
-                <RadzenCard Class="mt-3">
-                    Item 1
-                </RadzenCard>
-                <RadzenCard Class="mt-3">
-                    Item 2
-                </RadzenCard>
-                <RadzenCard Class="mt-3">
-                    Item 3
-                </RadzenCard>
-            </ChildContent>
+        <RadzenStack Orientation="@orientation" Spacing="@spacing">
+            <RadzenCard Class="mt-3">
+                Item 1
+            </RadzenCard>
+            <RadzenCard Class="mt-3">
+                Item 2
+            </RadzenCard>
+            <RadzenCard Class="mt-3">
+                Item 3
+            </RadzenCard>
         </RadzenStack>
     </div>
 
-    <div class="col-md-6 p-3">
-        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Horizontal stack</RadzenText>
-        <RadzenStack Orientation="Orientation.Horizontal">
-            <ChildContent>
-                <RadzenCard Class="mt-3">
-                    Item 1
-                </RadzenCard>
-                <RadzenCard Class="mt-3">
-                    Item 2
-                </RadzenCard>
-                <RadzenCard Class="mt-3">
-                    Item 3
-                </RadzenCard>
-            </ChildContent>
-        </RadzenStack>
-    </div>
-
-    <div class="col-md-6 p-3">
-        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Horizontal stack with spacing</RadzenText>
-        <RadzenStack Orientation="Orientation.Horizontal" Spacing="10">
-            <ChildContent>
-                <RadzenCard Class="mt-3">
-                    Item 1
-                </RadzenCard>
-                <RadzenCard Class="mt-3">
-                    Item 2
-                </RadzenCard>
-                <RadzenCard Class="mt-3">
-                    Item 3
-                </RadzenCard>
-            </ChildContent>
-        </RadzenStack>
-    </div>
 </RadzenExample>
+@code {
+    Orientation orientation = Orientation.Horizontal;
+    double spacing = 10;
+}
