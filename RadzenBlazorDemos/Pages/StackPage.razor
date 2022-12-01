@@ -6,7 +6,7 @@
         <RadzenSelectBar @bind-Value="@orientation" TextProperty="Text" ValueProperty="Value"
                          Data="@(Enum.GetValues(typeof(Orientation)).Cast<Orientation>().Select(t => new { Text = $"{t}", Value = t }))" Size="ButtonSize.Small" />
         <div style="white-space:nowrap;margin-left: 16px">Spacing:</div>
-        <RadzenNumeric @bind-Value="@spacing" />
+        <RadzenNumeric @bind-Value="@spacing" Format="0px" />
     </RadzenCard>
 
     <div class="col-md-6 p-3">
