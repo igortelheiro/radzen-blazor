@@ -1,0 +1,58 @@
+﻿@page "/stack"
+
+@using RadzenBlazorDemos.Data
+@using RadzenBlazorDemos.Models.Northwind
+@using Microsoft.EntityFrameworkCore
+
+<RadzenExample Name="Stack">
+    <div class="col-md-6 p-3">
+        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Vertical stack</RadzenText>
+        <RadzenStack>
+            <ChildContent>
+                <RadzenCard Class="mt-3">
+                    Item 1
+                </RadzenCard>
+                <RadzenCard Class="mt-3">
+                    Item 2
+                </RadzenCard>
+                <RadzenCard Class="mt-3">
+                    Item 3
+                </RadzenCard>
+            </ChildContent>
+        </RadzenStack>
+    </div>
+
+    <div class="col-md-6 p-3">
+        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Horizontal stack</RadzenText>
+        <RadzenStack Orientation="Orientation.Horizontal">
+            <ChildContent>
+                <RadzenCard Class="mt-3">
+                    Item 1
+                </RadzenCard>
+                <RadzenCard Class="mt-3">
+                    Item 2
+                </RadzenCard>
+                <RadzenCard Class="mt-3">
+                    Item 3
+                </RadzenCard>
+            </ChildContent>
+        </RadzenStack>
+    </div>
+
+    <div class="col-md-6 p-3">
+        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Horizontal stack with spacing</RadzenText>
+        <RadzenStack Orientation="Orientation.Horizontal" Spacing="10">
+            <ChildContent>
+                <RadzenCard Class="mt-3">
+                    Item 1
+                </RadzenCard>
+                <RadzenCard Class="mt-3">
+                    Item 2
+                </RadzenCard>
+                <RadzenCard Class="mt-3">
+                    Item 3
+                </RadzenCard>
+            </ChildContent>
+        </RadzenStack>
+    </div>
+</RadzenExample>

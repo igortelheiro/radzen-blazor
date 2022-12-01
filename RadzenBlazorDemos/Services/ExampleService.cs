@@ -709,6 +709,15 @@ namespace RadzenBlazorDemos
                 },
                 new Example()
                 {
+                    New = true,
+                    Name = "Stack",
+                    Title = "Blazor Stack component",
+                    Path = "stack",
+                    Icon = "&#xe8f2",
+                    Tags = new [] { "stack" }
+                },
+                new Example()
+                {
                     Name = "PanelMenu",
                     Title = "Blazor PanelMenu component",
                     Path = "panelmenu",
