@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Radzen.Blazor
 {
@@ -44,9 +41,15 @@ namespace Radzen.Blazor
         /// </summary>
         protected string GetComponentStyle()
         {
+            return $"{(!string.IsNullOrEmpty(Spacing) ? "gap:" + Spacing + (Spacing.All(c => Char.IsDigit(c)) ? "px;" : "") : "")}";
+        }
+
+        /// <inheritdoc />
+        protected override string GetComponentCssClass()
+        {
             var horizontal = Orientation == Orientation.Horizontal;
 
-            return $"display:grid;grid-auto-flow:{(horizontal ? "column" : "row")};grid-auto-{(horizontal ? "columns" : "rows")}:max-content;grid-template-{(horizontal ? "columns" : "rows")}: none;{(!string.IsNullOrEmpty(Spacing) ? "grid-gap:" + Spacing + (Spacing.All(c => Char.IsDigit(c)) ? "px;" : "") : "")}";
+            return $"rz-display-flex rz-flex-{(horizontal ? "column" : "row")} rz-align-items-center rz-justify-content-center";
         }
     }
 }
