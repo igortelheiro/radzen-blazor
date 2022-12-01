@@ -7,10 +7,12 @@
                          Data="@(Enum.GetValues(typeof(Orientation)).Cast<Orientation>().Select(t => new { Text = $"{t}", Value = t }))" Size="ButtonSize.Small" />
         <div style="white-space:nowrap;margin-left: 16px">Spacing:</div>
         <RadzenNumeric @bind-Value="@spacing" Format="0px" />
+        <div style="white-space:nowrap;margin-left: 16px">Reverse:</div>
+        <RadzenSwitch @bind-Value="@reverse" />
     </RadzenCard>
 
     <div class="col-md-6 p-3">
-        <RadzenStack Orientation="@orientation" Spacing="@($"{spacing}px")">
+        <RadzenStack Orientation="@orientation" Spacing="@($"{spacing}px")" Reverse="@reverse">
             <RadzenCard Class="mt-3">
                 Item 1
             </RadzenCard>
@@ -27,4 +29,5 @@
 @code {
     Orientation orientation = Orientation.Horizontal;
     double spacing = 10;
+    bool reverse;
 }
