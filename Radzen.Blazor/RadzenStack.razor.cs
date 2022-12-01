@@ -24,6 +24,13 @@ namespace Radzen.Blazor
         public string Spacing { get; set; }
 
         /// <summary>
+        /// Gets or sets the reverse
+        /// </summary>
+        /// <value>The reverse.</value>
+        [Parameter]
+        public bool Reverse { get; set; }
+
+        /// <summary>
         /// Gets the final CSS style rendered by the component. Combines it with a <c>style</c> custom attribute.
         /// </summary>
         protected string GetStyle()
