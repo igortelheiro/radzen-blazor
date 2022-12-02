@@ -16,6 +16,14 @@
   }
 }
 
+@mixin rz-property-css($property, $values) {
+  @each $value in $values {
+    .rz-#{$property}-#{$value} {
+      #{$property}: #{$value} !important;
+    }
+  }
+}
+
 @mixin rz-ripple($ripple-background: rgba(0,0,0,.12), $pseudo: false) {
   @if $pseudo == true {
 

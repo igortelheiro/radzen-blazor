@@ -366,6 +366,17 @@ $rz-transition-all: all 0.1s linear !default;
   --rz-transition-all: #{$rz-transition-all};
 }
 
+// Layout
+
+$display: block, inline, inline-block, flex, inline-flex, grid, inline-grid;
+@include rz-property-css('display', $display);
+
+$justify-content: center, start, end, flex-start, flex-end, left, right, normal, space-between, space-around, space-evenly, stretch;
+@include rz-property-css('justify-content', $justify-content);
+
+$align-items: normal, stretch, center, start, end, flex-start, flex-end;
+@include rz-property-css('align-items', $align-items);
+
 //---- CSS classes
 
 // Color
