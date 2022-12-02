@@ -63,7 +63,7 @@ namespace Radzen.Blazor
         /// </summary>
         protected string GetComponentStyle()
         {
-            return $"{(!string.IsNullOrEmpty(Spacing) ? "gap:" + Spacing + (Spacing.All(c => Char.IsDigit(c)) ? "px;" : "") : "")}";
+            return $"{Style};{(!string.IsNullOrEmpty(Spacing) ? "gap:" + Spacing + (Spacing.All(c => Char.IsDigit(c)) ? "px;" : "") : "")}";
         }
 
         /// <inheritdoc />
