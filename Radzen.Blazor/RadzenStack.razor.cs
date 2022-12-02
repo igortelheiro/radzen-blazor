@@ -14,6 +14,20 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The orientation.</value>
         [Parameter]
+        public JustifyContent JustifyContent { get; set; } = JustifyContent.Normal;
+
+        /// <summary>
+        /// Gets or sets the orientation.
+        /// </summary>
+        /// <value>The orientation.</value>
+        [Parameter]
+        public AlignItems AlignItems { get; set; } = AlignItems.Normal;
+
+        /// <summary>
+        /// Gets or sets the orientation.
+        /// </summary>
+        /// <value>The orientation.</value>
+        [Parameter]
         public Orientation Orientation { get; set; } = Orientation.Vertical;
 
         /// <summary>
@@ -56,7 +70,7 @@ namespace Radzen.Blazor
         {
             var horizontal = Orientation == Orientation.Horizontal;
 
-            return $"rz-display-flex rz-flex-{(horizontal ? "row" : "column")} rz-align-items-center rz-justify-content-center";
+            return $"rz-display-flex rz-flex-{(horizontal ? "row" : "column")}{(Reverse ? "-reverse" : "")} rz-align-items-{Enum.GetName(typeof(AlignItems), AlignItems).ToLower()} rz-justify-content-{Enum.GetName(typeof(JustifyContent), JustifyContent).ToLower()}";
         }
     }
 }

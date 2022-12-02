@@ -5,6 +5,12 @@
         <div style="white-space:nowrap; margin-right: 16px">Orientation:</div>
         <RadzenSelectBar @bind-Value="@orientation" TextProperty="Text" ValueProperty="Value"
                          Data="@(Enum.GetValues(typeof(Orientation)).Cast<Orientation>().Select(t => new { Text = $"{t}", Value = t }))" Size="ButtonSize.Small" />
+        <div style="white-space:nowrap; margin-right: 16px">AlignItems:</div>
+        <RadzenDropDown @bind-Value="@alignItems" TextProperty="Text" ValueProperty="Value"
+                         Data="@(Enum.GetValues(typeof(AlignItems)).Cast<AlignItems>().Select(t => new { Text = $"{t}", Value = t }))" Size="ButtonSize.Small" />
+        <div style="white-space:nowrap; margin-right: 16px">JustifyContent:</div>
+        <RadzenDropDown @bind-Value="@justifyContent" TextProperty="Text" ValueProperty="Value"
+                         Data="@(Enum.GetValues(typeof(JustifyContent)).Cast<JustifyContent>().Select(t => new { Text = $"{t}", Value = t }))" Size="ButtonSize.Small" />
         <div style="white-space:nowrap;margin-left: 16px">Spacing:</div>
         <RadzenNumeric @bind-Value="@spacing" Format="0px" />
         <div style="white-space:nowrap;margin-left: 16px">Reverse:</div>
@@ -12,7 +18,7 @@
     </RadzenCard>
 
     <RadzenCard class="p-5" style="min-height: 350px;">
-        <RadzenStack Orientation="@orientation" Spacing="@($"{spacing}px")" Reverse="@reverse">
+        <RadzenStack Orientation="@orientation" Spacing="@($"{spacing}px")" Reverse="@reverse" JustifyContent="@justifyContent" AlignItems="@alignItems">
             <RadzenCard Class="rz-background-color-info rz-color-white rz-text-align-center" style="width: 100px;">
                 A
             </RadzenCard>
@@ -31,6 +37,8 @@
 </RadzenExample>
 @code {
     Orientation orientation = Orientation.Horizontal;
+    AlignItems alignItems = AlignItems.Normal;
+    JustifyContent justifyContent = JustifyContent.Normal;
     double spacing = 10;
     bool reverse;
 }

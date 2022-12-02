@@ -854,6 +854,96 @@ namespace Radzen
     }
 
     /// <summary>
+    /// Represents content justification of Stack items.
+    /// </summary>
+    public enum JustifyContent
+    {
+        /// <summary>
+        /// Center content justification of Stack items.
+        /// </summary>
+        Center,
+        /// <summary>
+        /// Start content justification of Stack items.
+        /// </summary>
+        Start,
+        /// <summary>
+        /// End content justification of Stack items.
+        /// </summary>
+        End,
+        /// <summary>
+        /// FlexStart content justification of Stack items.
+        /// </summary>
+        FlexStart,
+        /// <summary>
+        /// FlexEnd content justification of Stack items.
+        /// </summary>
+        FlexEnd,
+        /// <summary>
+        /// Left content justification of Stack items.
+        /// </summary>
+        Left,
+        /// <summary>
+        /// Right content justification of Stack items.
+        /// </summary>
+        Right,
+        /// <summary>
+        /// Normal content justification of Stack items.
+        /// </summary>
+        Normal,
+        /// <summary>
+        /// SpaceBetween content justification of Stack items.
+        /// </summary>
+        SpaceBetween,
+        /// <summary>
+        /// SpaceAround content justification of Stack items.
+        /// </summary>
+        SpaceAround,
+        /// <summary>
+        /// SpaceEvenly content justification of Stack items.
+        /// </summary>
+        SpaceEvenly,
+        /// <summary>
+        /// Stretch content justification of Stack items.
+        /// </summary>
+        Stretch
+    }
+
+    /// <summary>
+    /// Represents the alignment of Stack items.
+    /// </summary>
+    public enum AlignItems
+    {
+        /// <summary>
+        /// Normal items alignment.
+        /// </summary>
+        Normal,
+        /// <summary>
+        /// Center items alignment.
+        /// </summary>
+        Center,
+        /// <summary>
+        /// Start items alignment.
+        /// </summary>
+        Start,
+        /// <summary>
+        /// End items alignment.
+        /// </summary>
+        End,
+        /// <summary>
+        /// FlexStart items alignment.
+        /// </summary>
+        FlexStart,
+        /// <summary>
+        /// FlexEnd items alignment.
+        /// </summary>
+        FlexEnd,
+        /// <summary>
+        /// Stretch items alignment.
+        /// </summary>
+        Stretch
+    }
+
+    /// <summary>
     /// Specifies the sort order in components that support sorting.
     /// </summary>
     public enum SortOrder
