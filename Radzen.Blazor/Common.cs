@@ -871,14 +871,6 @@ namespace Radzen
         /// </summary>
         End,
         /// <summary>
-        /// FlexStart content justification of Stack items.
-        /// </summary>
-        FlexStart,
-        /// <summary>
-        /// FlexEnd content justification of Stack items.
-        /// </summary>
-        FlexEnd,
-        /// <summary>
         /// Left content justification of Stack items.
         /// </summary>
         Left,
@@ -929,14 +921,6 @@ namespace Radzen
         /// End items alignment.
         /// </summary>
         End,
-        /// <summary>
-        /// FlexStart items alignment.
-        /// </summary>
-        FlexStart,
-        /// <summary>
-        /// FlexEnd items alignment.
-        /// </summary>
-        FlexEnd,
         /// <summary>
         /// Stretch items alignment.
         /// </summary>

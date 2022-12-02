@@ -63,7 +63,7 @@ namespace Radzen.Blazor
         /// </summary>
         protected string GetComponentStyle()
         {
-            return $"{Style};{(!string.IsNullOrEmpty(Spacing) ? "gap:" + Spacing + (Spacing.All(c => Char.IsDigit(c)) ? "px;" : "") : "")}";
+            return $"{Style}{(!string.IsNullOrEmpty(Style) && !Style.EndsWith(";") ? ";" : "")}{(!string.IsNullOrEmpty(Spacing) ? "gap:" + Spacing + (Spacing.All(c => Char.IsDigit(c)) ? "px;" : "") : "")}";
         }
 
         /// <inheritdoc />
@@ -71,34 +71,32 @@ namespace Radzen.Blazor
         {
             var horizontal = Orientation == Orientation.Horizontal;
 
-            return $"rz-display-flex rz-flex-{(horizontal ? "row" : "column")}{(Reverse ? "-reverse" : "")} rz-align-items-{ToDashCase(Enum.GetName(typeof(AlignItems), AlignItems))} rz-justify-content-{ToDashCase(Enum.GetName(typeof(JustifyContent), JustifyContent))}";
+            return $"rz-display-flex rz-flex-{(horizontal ? "row" : "column")}{(Reverse ? "-reverse" : "")} rz-align-items-{GetFlexCSSClass<AlignItems>(AlignItems)} rz-justify-content-{GetFlexCSSClass<JustifyContent>(JustifyContent)}";
         }
 
-        static string ToDashCase(string text)
+        string GetFlexCSSClass<T>(Enum v)
         {
-            if (text == null)
-            {
-                throw new ArgumentNullException(nameof(text));
-            }
-            if (text.Length < 2)
-            {
-                return text;
-            }
+            var value = ToDashCase(Enum.GetName(typeof(T), v));
+            return value == "start" || value == "end" ? $"flex-{value}" : value;
+        }
+
+        static string ToDashCase(string value)
+        {
             var sb = new StringBuilder();
-            sb.Append(char.ToLowerInvariant(text[0]));
-            for (int i = 1; i < text.Length; ++i)
+
+            foreach (var ch in value)
             {
-                char c = text[i];
-                if (char.IsUpper(c))
+                if ((char.IsUpper(ch) && sb.Length > 0) || char.IsSeparator(ch))
                 {
                     sb.Append('-');
-                    sb.Append(char.ToLowerInvariant(c));
                 }
-                else
+
+                if (char.IsLetterOrDigit(ch))
                 {
-                    sb.Append(c);
+                    sb.Append(char.ToLowerInvariant(ch));
                 }
             }
+
             return sb.ToString();
         }
     }
