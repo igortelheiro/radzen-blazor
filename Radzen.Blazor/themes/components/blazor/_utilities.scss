@@ -375,7 +375,7 @@ $display: block, inline, inline-block, flex, inline-flex, grid, inline-grid;
 
 // Justify-content
 // Example .rz-justify-content-center
-$justify-content: center, start, end, flex-start, flex-end, left, right, normal, space-between, space-around, space-evenly, stretch;
+$justify-content: normal, stretch, center, start, end, flex-start, flex-end, left, right, space-between, space-around, space-evenly;
 @include rz-utility-list-css('justify-content', $justify-content);
 
 // Align-items
