@@ -11,22 +11,22 @@
         <RadzenSwitch @bind-Value="@reverse" />
     </RadzenCard>
 
-    <div class="col p-3" style="min-height: 300px;">
+    <RadzenCard class="p-5" style="min-height: 350px;">
         <RadzenStack Orientation="@orientation" Spacing="@($"{spacing}px")" Reverse="@reverse">
-            <RadzenCard Class="mt-3 rz-background-color-info rz-color-white rz-text-align-center" style="width: 100px;">
+            <RadzenCard Class="rz-background-color-info rz-color-white rz-text-align-center" style="width: 100px;">
                 A
             </RadzenCard>
-            <RadzenCard Class="mt-3 rz-background-color-success rz-color-white rz-text-align-center" style="width: 100px;">
+            <RadzenCard Class="rz-background-color-success rz-color-white rz-text-align-center" style="width: 100px;">
                 B
             </RadzenCard>
-            <RadzenCard Class="mt-3 rz-background-color-warning rz-color-white rz-text-align-center" style="width: 100px;">
+            <RadzenCard Class="rz-background-color-warning rz-color-white rz-text-align-center" style="width: 100px;">
                 C
             </RadzenCard>
-            <RadzenCard Class="mt-3 rz-background-color-danger rz-color-white rz-text-align-center" style="width: 100px;">
+            <RadzenCard Class="rz-background-color-danger rz-color-white rz-text-align-center" style="width: 100px;">
                 D
             </RadzenCard>
         </RadzenStack>
-    </div>
+    </RadzenCard>
 
 </RadzenExample>
 @code {
