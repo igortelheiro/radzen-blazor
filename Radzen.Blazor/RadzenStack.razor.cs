@@ -56,7 +56,7 @@ namespace Radzen.Blazor
         {
             var horizontal = Orientation == Orientation.Horizontal;
 
-            return $"rz-display-flex rz-flex-{(horizontal ? "column" : "row")} rz-align-items-center rz-justify-content-center";
+            return $"rz-display-flex rz-flex-{(horizontal ? "row" : "column")} rz-align-items-center rz-justify-content-center";
         }
     }
 }
