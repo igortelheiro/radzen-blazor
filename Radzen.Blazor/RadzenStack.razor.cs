@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System;
 using System.Linq;
+using System.Text;
 
 namespace Radzen.Blazor
 {
@@ -70,7 +71,35 @@ namespace Radzen.Blazor
         {
             var horizontal = Orientation == Orientation.Horizontal;
 
-            return $"rz-display-flex rz-flex-{(horizontal ? "row" : "column")}{(Reverse ? "-reverse" : "")} rz-align-items-{Enum.GetName(typeof(AlignItems), AlignItems).ToLower()} rz-justify-content-{Enum.GetName(typeof(JustifyContent), JustifyContent).ToLower()}";
+            return $"rz-display-flex rz-flex-{(horizontal ? "row" : "column")}{(Reverse ? "-reverse" : "")} rz-align-items-{ToDashCase(Enum.GetName(typeof(AlignItems), AlignItems))} rz-justify-content-{ToDashCase(Enum.GetName(typeof(JustifyContent), JustifyContent))}";
+        }
+
+        static string ToDashCase(string text)
+        {
+            if (text == null)
+            {
+                throw new ArgumentNullException(nameof(text));
+            }
+            if (text.Length < 2)
+            {
+                return text;
+            }
+            var sb = new StringBuilder();
+            sb.Append(char.ToLowerInvariant(text[0]));
+            for (int i = 1; i < text.Length; ++i)
+            {
+                char c = text[i];
+                if (char.IsUpper(c))
+                {
+                    sb.Append('-');
+                    sb.Append(char.ToLowerInvariant(c));
+                }
+                else
+                {
+                    sb.Append(c);
+                }
+            }
+            return sb.ToString();
         }
     }
 }
