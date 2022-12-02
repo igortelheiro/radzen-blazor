@@ -16,19 +16,18 @@
         <div style="white-space:nowrap;margin-left: 16px">Reverse:</div>
         <RadzenSwitch @bind-Value="@reverse" />
     </RadzenCard>
-
-    <RadzenCard class="p-5" style="min-height: 350px;">
-        <RadzenStack Orientation="@orientation" Spacing="@spacing" Reverse="@reverse" JustifyContent="@justifyContent" AlignItems="@alignItems">
-            <RadzenCard Class="rz-background-color-info rz-color-white rz-text-align-center" style="width: 100px;">
+    <RadzenCard class="p-0">
+        <RadzenStack Orientation="@orientation" Spacing="@($"{spacing}px")" Reverse="@reverse" JustifyContent="@justifyContent" AlignItems="@alignItems" Style="height: 400px">
+            <RadzenCard Class="p-1 rz-background-color-info rz-color-white rz-text-align-center">
                 A
             </RadzenCard>
-            <RadzenCard Class="rz-background-color-success rz-color-white rz-text-align-center" style="width: 100px;">
+            <RadzenCard Class="p-1 rz-background-color-success rz-color-white rz-text-align-center" style="height: 40px; width: 40px;">
                 B
             </RadzenCard>
-            <RadzenCard Class="rz-background-color-warning rz-color-white rz-text-align-center" style="width: 100px;">
+            <RadzenCard Class="p-1 rz-background-color-warning rz-color-white rz-text-align-center" style="height: 60px; width: 60px;">
                 C
             </RadzenCard>
-            <RadzenCard Class="rz-background-color-danger rz-color-white rz-text-align-center" style="width: 100px;">
+            <RadzenCard Class="p-1 rz-background-color-danger rz-color-white rz-text-align-center" style="height: 80px; width: 80px;">
                 D
             </RadzenCard>
         </RadzenStack>
