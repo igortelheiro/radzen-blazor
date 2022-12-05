@@ -859,6 +859,10 @@ namespace Radzen
     public enum JustifyContent
     {
         /// <summary>
+        /// Normal content justification of Stack items.
+        /// </summary>
+        Normal,
+        /// <summary>
         /// Center content justification of Stack items.
         /// </summary>
         Center,
@@ -878,10 +882,6 @@ namespace Radzen
         /// Right content justification of Stack items.
         /// </summary>
         Right,
-        /// <summary>
-        /// Normal content justification of Stack items.
-        /// </summary>
-        Normal,
         /// <summary>
         /// SpaceBetween content justification of Stack items.
         /// </summary>
