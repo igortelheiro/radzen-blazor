@@ -11,16 +11,16 @@ namespace Radzen.Blazor
     public partial class RadzenStack : RadzenComponentWithChildren
     {
         /// <summary>
-        /// Gets or sets the orientation.
+        /// Gets or sets the content justify.
         /// </summary>
-        /// <value>The orientation.</value>
+        /// <value>The content justify.</value>
         [Parameter]
         public JustifyContent JustifyContent { get; set; } = JustifyContent.Normal;
 
         /// <summary>
-        /// Gets or sets the orientation.
+        /// Gets or sets the items alignment.
         /// </summary>
-        /// <value>The orientation.</value>
+        /// <value>The items alignment.</value>
         [Parameter]
         public AlignItems AlignItems { get; set; } = AlignItems.Normal;
 
