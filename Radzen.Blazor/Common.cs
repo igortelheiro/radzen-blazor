@@ -928,6 +928,64 @@ namespace Radzen
     }
 
     /// <summary>
+    /// Represents the alignment of Row/Col child content.
+    /// </summary>
+    public enum VerticalAlignment
+    {
+        /// <summary>
+        /// No alignment.
+        /// </summary>
+        None,
+        /// <summary>
+        /// Center items alignment.
+        /// </summary>
+        Center,
+        /// <summary>
+        /// Start items alignment.
+        /// </summary>
+        FlexStart,
+        /// <summary>
+        /// End items alignment.
+        /// </summary>
+        FlexEnd,
+    }
+
+    /// <summary>
+    /// Represents the alignment of Row/Col child content.
+    /// </summary>
+    public enum HorizontalAlignment
+    {
+        /// <summary>
+        /// No content alignment.
+        /// </summary>
+        None,
+        /// <summary>
+        /// Center content alignment.
+        /// </summary>
+        Center,
+        /// <summary>
+        /// Start content alignment.
+        /// </summary>
+        FlexStart,
+        /// <summary>
+        /// End content alignment.
+        /// </summary>
+        FlexEnd,
+        /// <summary>
+        /// SpaceBetween content alignment.
+        /// </summary>
+        SpaceBetween,
+        /// <summary>
+        /// SpaceAround content alignment.
+        /// </summary>
+        SpaceAround,
+        /// <summary>
+        /// SpaceEvenly content alignment.
+        /// </summary>
+        SpaceEvenly
+    }
+
+    /// <summary>
     /// Specifies the sort order in components that support sorting.
     /// </summary>
     public enum SortOrder
@@ -2434,6 +2492,26 @@ namespace Radzen
         /// <value>The content of the child.</value>
         [Parameter]
         public RenderFragment ChildContent { get; set; }
+    }
+
+    /// <summary>
+    /// A base class of row/col components.
+    /// </summary>
+    public class RadzenRowCol : RadzenComponentWithChildren
+    {
+        /// <summary>
+        /// Gets or sets the vertical alignment.
+        /// </summary>
+        /// <value>The vertical alignment.</value>
+        [Parameter]
+        public VerticalAlignment VerticalAlignment { get; set; }
+
+        /// <summary>
+        /// Gets or sets the horizontal alignment.
+        /// </summary>
+        /// <value>The horizontal alignment.</value>
+        [Parameter]
+        public HorizontalAlignment HorizontalAlignment { get; set; }
     }
 
     class Debouncer

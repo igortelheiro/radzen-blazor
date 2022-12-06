@@ -8,7 +8,7 @@ namespace Radzen.Blazor
     /// <summary>
     /// RadzenCard component.
     /// </summary>
-    public partial class RadzenRow : RadzenComponentWithChildren
+    public partial class RadzenRow : RadzenRowCol
     {
         /// <summary>
         /// Gets the final CSS style rendered by the component. Combines it with a <c>style</c> custom attribute.
