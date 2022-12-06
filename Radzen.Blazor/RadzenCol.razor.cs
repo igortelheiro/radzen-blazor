@@ -167,7 +167,7 @@ namespace Radzen.Blazor
         {
             if (value < 0 || value > 12)
             {
-                new Exception($"Property {name} value should be between 0 and 12.");
+                throw new Exception($"Property {name} value should be between 0 and 12.");
             }
 
             return value;
