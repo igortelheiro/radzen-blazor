@@ -144,84 +144,47 @@ namespace Radzen.Blazor
             var list = new List<string>();
 
             // Size
-            if (SizeXS != 0)
+            var size = new Dictionary<string, int> { { "xs", SizeXS } , { "sm", SizeSM } ,{ "md", SizeMD }, { "lg", SizeLG }, { "xl", SizeXL } };
+            foreach (var i in size) 
             {
-                list.Add($"rz-col-xs-{SizeXS}");
-            }
-
-            if (SizeSM != 0)
-            {
-                list.Add($"rz-col-sm-{SizeSM}");
-            }
-
-            if (SizeMD != 0)
-            {
-                list.Add($"rz-col-md-{SizeMD}");
-            }
-
-            if (SizeLG != 0)
-            {
-                list.Add($"rz-col-lg-{SizeLG}");
-            }
-
-            if (SizeXL != 0)
-            {
-                list.Add($"rz-col-xl-{SizeXL}");
+                if (i.Value != 0)
+                {
+                    list.Add($"rz-col-{i.Key}-{GetColumnValue(i.Value)}");
+                }
             }
 
             // Ofsset
-            if (OffsetXS != 0)
+            var offset = new Dictionary<string, int> { { "xs", OffsetXS }, { "sm", OffsetSM }, { "md", OffsetMD }, { "lg", OffsetLG }, { "xl", OffsetXL } };
+            foreach (var i in offset)
             {
-                list.Add($"rz-col-offset-xs-{OffsetXS}");
+                if (i.Value != 0)
+                {
+                    list.Add($"rz-col-offset-{i.Key}-{GetColumnValue(i.Value)}");
+                }
             }
 
-            if (OffsetSM != 0)
-            {
-                list.Add($"rz-col-offset-sm-{OffsetSM}");
-            }
-
-            if (OffsetMD != 0)
-            {
-                list.Add($"rz-col-offset-md-{OffsetMD}");
-            }
-
-            if (OffsetLG != 0)
-            {
-                list.Add($"rz-col-offset-lg-{OffsetLG}");
-            }
-
-            if (OffsetXL != 0)
-            {
-                list.Add($"rz-col-offset-xl-{OffsetXL}");
-            }
 
             // Order
-            if (OrderXS != 0)
+            var order = new Dictionary<string, int> { { "xs", OrderXS }, { "sm", OrderSM }, { "md", OrderMD }, { "lg", OrderLG }, { "xl", OrderXL } };
+            foreach (var i in offset)
             {
-                list.Add($"rz-col-order-xs-{OrderXS}");
-            }
-
-            if (OrderSM != 0)
-            {
-                list.Add($"rz-col-order-sm-{OrderSM}");
-            }
-
-            if (OrderMD != 0)
-            {
-                list.Add($"rz-col-order-md-{OrderMD}");
-            }
-
-            if (OrderLG != 0)
-            {
-                list.Add($"rz-col-order-lg-{OrderLG}");
-            }
-
-            if (OrderXL != 0)
-            {
-                list.Add($"rz-col-order-xl-{OrderXL}");
+                if (i.Value != 0)
+                {
+                    list.Add($"rz-col-order-{i.Key}-{GetColumnValue(i.Value)}");
+                }
             }
 
             return string.Join(" ", list);
+        }
+
+        int GetColumnValue(int value)
+        {
+            if (value < 0 || value > 12)
+            {
+                new Exception("Value should be between 0 and 12.");
+            }
+
+            return value;
         }
     }
 }
