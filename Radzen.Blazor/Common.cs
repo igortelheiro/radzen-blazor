@@ -928,64 +928,6 @@ namespace Radzen
     }
 
     /// <summary>
-    /// Represents the alignment of Row/Col child content.
-    /// </summary>
-    public enum VerticalAlignment
-    {
-        /// <summary>
-        /// No alignment.
-        /// </summary>
-        None,
-        /// <summary>
-        /// Center items alignment.
-        /// </summary>
-        Center,
-        /// <summary>
-        /// Start items alignment.
-        /// </summary>
-        FlexStart,
-        /// <summary>
-        /// End items alignment.
-        /// </summary>
-        FlexEnd,
-    }
-
-    /// <summary>
-    /// Represents the alignment of Row/Col child content.
-    /// </summary>
-    public enum HorizontalAlignment
-    {
-        /// <summary>
-        /// No content alignment.
-        /// </summary>
-        None,
-        /// <summary>
-        /// Center content alignment.
-        /// </summary>
-        Center,
-        /// <summary>
-        /// Start content alignment.
-        /// </summary>
-        FlexStart,
-        /// <summary>
-        /// End content alignment.
-        /// </summary>
-        FlexEnd,
-        /// <summary>
-        /// SpaceBetween content alignment.
-        /// </summary>
-        SpaceBetween,
-        /// <summary>
-        /// SpaceAround content alignment.
-        /// </summary>
-        SpaceAround,
-        /// <summary>
-        /// SpaceEvenly content alignment.
-        /// </summary>
-        SpaceEvenly
-    }
-
-    /// <summary>
     /// Specifies the sort order in components that support sorting.
     /// </summary>
     public enum SortOrder
@@ -2497,21 +2439,47 @@ namespace Radzen
     /// <summary>
     /// A base class of row/col components.
     /// </summary>
-    public class RadzenRowCol : RadzenComponentWithChildren
+    public class RadzenFlexComponent : RadzenComponentWithChildren
     {
         /// <summary>
-        /// Gets or sets the vertical alignment.
+        /// Gets or sets the content justify.
         /// </summary>
-        /// <value>The vertical alignment.</value>
+        /// <value>The content justify.</value>
         [Parameter]
-        public VerticalAlignment VerticalAlignment { get; set; }
+        public JustifyContent JustifyContent { get; set; } = JustifyContent.Normal;
 
         /// <summary>
-        /// Gets or sets the horizontal alignment.
+        /// Gets or sets the items alignment.
         /// </summary>
-        /// <value>The horizontal alignment.</value>
+        /// <value>The items alignment.</value>
         [Parameter]
-        public HorizontalAlignment HorizontalAlignment { get; set; }
+        public AlignItems AlignItems { get; set; } = AlignItems.Normal;
+
+        internal string GetFlexCSSClass<T>(Enum v)
+        {
+            var value = ToDashCase(Enum.GetName(typeof(T), v));
+            return value == "start" || value == "end" ? $"flex-{value}" : value;
+        }
+
+        internal string ToDashCase(string value)
+        {
+            var sb = new StringBuilder();
+
+            foreach (var ch in value)
+            {
+                if ((char.IsUpper(ch) && sb.Length > 0) || char.IsSeparator(ch))
+                {
+                    sb.Append('-');
+                }
+
+                if (char.IsLetterOrDigit(ch))
+                {
+                    sb.Append(char.ToLowerInvariant(ch));
+                }
+            }
+
+            return sb.ToString();
+        }
     }
 
     class Debouncer

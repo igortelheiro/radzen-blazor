@@ -8,22 +8,8 @@ namespace Radzen.Blazor
     /// <summary>
     /// RadzenCard component.
     /// </summary>
-    public partial class RadzenStack : RadzenComponentWithChildren
+    public partial class RadzenStack : RadzenFlexComponent
     {
-        /// <summary>
-        /// Gets or sets the content justify.
-        /// </summary>
-        /// <value>The content justify.</value>
-        [Parameter]
-        public JustifyContent JustifyContent { get; set; } = JustifyContent.Normal;
-
-        /// <summary>
-        /// Gets or sets the items alignment.
-        /// </summary>
-        /// <value>The items alignment.</value>
-        [Parameter]
-        public AlignItems AlignItems { get; set; } = AlignItems.Normal;
-
         /// <summary>
         /// Gets or sets the orientation.
         /// </summary>
@@ -72,32 +58,6 @@ namespace Radzen.Blazor
             var horizontal = Orientation == Orientation.Horizontal;
 
             return $"rz-display-flex rz-flex-{(horizontal ? "row" : "column")}{(Reverse ? "-reverse" : "")} rz-align-items-{GetFlexCSSClass<AlignItems>(AlignItems)} rz-justify-content-{GetFlexCSSClass<JustifyContent>(JustifyContent)}";
-        }
-
-        string GetFlexCSSClass<T>(Enum v)
-        {
-            var value = ToDashCase(Enum.GetName(typeof(T), v));
-            return value == "start" || value == "end" ? $"flex-{value}" : value;
-        }
-
-        static string ToDashCase(string value)
-        {
-            var sb = new StringBuilder();
-
-            foreach (var ch in value)
-            {
-                if ((char.IsUpper(ch) && sb.Length > 0) || char.IsSeparator(ch))
-                {
-                    sb.Append('-');
-                }
-
-                if (char.IsLetterOrDigit(ch))
-                {
-                    sb.Append(char.ToLowerInvariant(ch));
-                }
-            }
-
-            return sb.ToString();
         }
     }
 }

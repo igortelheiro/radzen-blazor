@@ -10,7 +10,7 @@ namespace Radzen.Blazor
     /// <summary>
     /// RadzenCard component.
     /// </summary>
-    public partial class RadzenCol : RadzenRowCol
+    public partial class RadzenCol : RadzenFlexComponent
     {
         /// <summary>
         /// Gets or sets the XS size.
@@ -156,6 +156,9 @@ namespace Radzen.Blazor
                     list.Add($"rz-col-{(!p.Name.StartsWith("Size") ? p.Name.ToLower().Replace(p.BreakPoint, "") + "-" : "")}{p.BreakPoint}-{GetColumnValue(p.Name, p.Value)}");
                 }
             }
+
+            list.Add($"rz-align-items-{GetFlexCSSClass<AlignItems>(AlignItems)}");
+            list.Add($"rz-justify-content-{GetFlexCSSClass<JustifyContent>(JustifyContent)}");
 
             return string.Join(" ", list);
         }
