@@ -141,7 +141,7 @@ namespace Radzen.Blazor
         /// <inheritdoc />
         protected override string GetComponentCssClass()
         {
-            var list = new List<string>();
+            var list = new List<string>() { "rz-display-flex" };
 
             var breakPoints = new string[] { "xs", "sm", "md", "lg", "xl" };
 
