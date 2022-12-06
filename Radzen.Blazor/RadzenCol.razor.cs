@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,6 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The XS size.</value>
         [Parameter]
-        [Range(0, 12)]
         public int SizeXS { get; set; }
 
         /// <summary>
@@ -24,7 +24,6 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The SM size.</value>
         [Parameter]
-        [Range(0, 12)]
         public int SizeSM { get; set; }
 
         /// <summary>
@@ -32,7 +31,6 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The MD size.</value>
         [Parameter]
-        [Range(0, 12)]
         public int SizeMD { get; set; }
 
         /// <summary>
@@ -40,7 +38,6 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The LG size.</value>
         [Parameter]
-        [Range(0, 12)]
         public int SizeLG { get; set; }
 
         /// <summary>
@@ -48,7 +45,6 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The XL size.</value>
         [Parameter]
-        [Range(0, 12)]
         public int SizeXL { get; set; }
 
         /// <summary>
@@ -56,7 +52,6 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The XS offset.</value>
         [Parameter]
-        [Range(0, 12)]
         public int OffsetXS { get; set; }
 
         /// <summary>
@@ -64,7 +59,6 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The SM offset.</value>
         [Parameter]
-        [Range(0, 12)]
         public int OffsetSM { get; set; }
 
         /// <summary>
@@ -72,7 +66,6 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The MD offset.</value>
         [Parameter]
-        [Range(0, 12)]
         public int OffsetMD { get; set; }
 
         /// <summary>
@@ -80,7 +73,6 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The LG offset.</value>
         [Parameter]
-        [Range(0, 12)]
         public int OffsetLG { get; set; }
 
         /// <summary>
@@ -88,7 +80,6 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The XL offset.</value>
         [Parameter]
-        [Range(0, 12)]
         public int OffsetXL { get; set; }
 
         /// <summary>
@@ -96,7 +87,6 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The XS order.</value>
         [Parameter]
-        [Range(0, 12)]
         public int OrderXS { get; set; }
 
         /// <summary>
@@ -104,7 +94,6 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The SM order.</value>
         [Parameter]
-        [Range(0, 12)]
         public int OrderSM { get; set; }
 
         /// <summary>
@@ -112,7 +101,6 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The MD order.</value>
         [Parameter]
-        [Range(0, 12)]
         public int OrderMD { get; set; }
 
         /// <summary>
@@ -120,7 +108,6 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The LG order.</value>
         [Parameter]
-        [Range(0, 12)]
         public int OrderLG { get; set; }
 
         /// <summary>
@@ -128,7 +115,6 @@ namespace Radzen.Blazor
         /// </summary>
         /// <value>The XL order.</value>
         [Parameter]
-        [Range(0, 12)]
         public int OrderXL { get; set; }
 
         /// <summary>
@@ -155,7 +141,87 @@ namespace Radzen.Blazor
         /// <inheritdoc />
         protected override string GetComponentCssClass()
         {
-            return $"rz-col";
+            var list = new List<string>();
+
+            // Size
+            if (SizeXS != 0)
+            {
+                list.Add($"rz-col-xs-{SizeXS}");
+            }
+
+            if (SizeSM != 0)
+            {
+                list.Add($"rz-col-sm-{SizeSM}");
+            }
+
+            if (SizeMD != 0)
+            {
+                list.Add($"rz-col-md-{SizeMD}");
+            }
+
+            if (SizeLG != 0)
+            {
+                list.Add($"rz-col-lg-{SizeLG}");
+            }
+
+            if (SizeXL != 0)
+            {
+                list.Add($"rz-col-xl-{SizeXL}");
+            }
+
+            // Ofsset
+            if (OffsetXS != 0)
+            {
+                list.Add($"rz-col-offset-xs-{OffsetXS}");
+            }
+
+            if (OffsetSM != 0)
+            {
+                list.Add($"rz-col-offset-sm-{OffsetSM}");
+            }
+
+            if (OffsetMD != 0)
+            {
+                list.Add($"rz-col-offset-md-{OffsetMD}");
+            }
+
+            if (OffsetLG != 0)
+            {
+                list.Add($"rz-col-offset-lg-{OffsetLG}");
+            }
+
+            if (OffsetXL != 0)
+            {
+                list.Add($"rz-col-offset-xl-{OffsetXL}");
+            }
+
+            // Order
+            if (OrderXS != 0)
+            {
+                list.Add($"rz-col-order-xs-{OrderXS}");
+            }
+
+            if (OrderSM != 0)
+            {
+                list.Add($"rz-col-order-sm-{OrderSM}");
+            }
+
+            if (OrderMD != 0)
+            {
+                list.Add($"rz-col-order-md-{OrderMD}");
+            }
+
+            if (OrderLG != 0)
+            {
+                list.Add($"rz-col-order-lg-{OrderLG}");
+            }
+
+            if (OrderXL != 0)
+            {
+                list.Add($"rz-col-order-xl-{OrderXL}");
+            }
+
+            return string.Join(" ", list);
         }
     }
 }
