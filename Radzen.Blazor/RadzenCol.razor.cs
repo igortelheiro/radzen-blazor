@@ -143,45 +143,28 @@ namespace Radzen.Blazor
         {
             var list = new List<string>();
 
-            // Size
-            var size = new Dictionary<string, int> { { "xs", SizeXS } , { "sm", SizeSM } ,{ "md", SizeMD }, { "lg", SizeLG }, { "xl", SizeXL } };
-            foreach (var i in size) 
-            {
-                if (i.Value != 0)
-                {
-                    list.Add($"rz-col-{i.Key}-{GetColumnValue(i.Value)}");
-                }
-            }
+            var breakPoints = new string[] { "xs", "sm", "md", "lg", "xl" };
 
-            // Ofsset
-            var offset = new Dictionary<string, int> { { "xs", OffsetXS }, { "sm", OffsetSM }, { "md", OffsetMD }, { "lg", OffsetLG }, { "xl", OffsetXL } };
-            foreach (var i in offset)
-            {
-                if (i.Value != 0)
-                {
-                    list.Add($"rz-col-offset-{i.Key}-{GetColumnValue(i.Value)}");
-                }
-            }
+            var properties = GetType().GetProperties()
+                .Where(p => breakPoints.Any(bp => p.Name.ToLower().EndsWith(bp)))
+                .Select(p => new { p.Name, BreakPoint = string.Concat(p.Name.ToLower().TakeLast(2)), Value = (int)p.GetValue(this) });
 
-
-            // Order
-            var order = new Dictionary<string, int> { { "xs", OrderXS }, { "sm", OrderSM }, { "md", OrderMD }, { "lg", OrderLG }, { "xl", OrderXL } };
-            foreach (var i in offset)
+            foreach(var p in properties) 
             {
-                if (i.Value != 0)
+                if (p.Value != 0)
                 {
-                    list.Add($"rz-col-order-{i.Key}-{GetColumnValue(i.Value)}");
+                    list.Add($"rz-col-{(!p.Name.StartsWith("Size") ? p.Name.ToLower().Replace(p.BreakPoint, "") + "-" : "")}{p.BreakPoint}-{GetColumnValue(p.Name, p.Value)}");
                 }
             }
 
             return string.Join(" ", list);
         }
 
-        int GetColumnValue(int value)
+        int GetColumnValue(string name, int value)
         {
             if (value < 0 || value > 12)
             {
-                new Exception("Value should be between 0 and 12.");
+                new Exception($"Property {name} value should be between 0 and 12.");
             }
 
             return value;
